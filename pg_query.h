@@ -18,6 +18,7 @@ typedef struct {
 
 typedef struct {
   char* plpgsql_funcs;
+  char* stderr_buffer;
   PgQueryError* error;
 } PgQueryPlpgsqlParseResult;
 

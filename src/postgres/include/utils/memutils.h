@@ -75,14 +75,14 @@ typedef struct StandardChunkHeader
  */
 extern PGDLLIMPORT __thread  MemoryContext TopMemoryContext;
 extern PGDLLIMPORT __thread  MemoryContext ErrorContext;
-extern PGDLLIMPORT MemoryContext PostmasterContext;
-extern PGDLLIMPORT MemoryContext CacheMemoryContext;
-extern PGDLLIMPORT MemoryContext MessageContext;
-extern PGDLLIMPORT MemoryContext TopTransactionContext;
-extern PGDLLIMPORT MemoryContext CurTransactionContext;
+//extern PGDLLIMPORT MemoryContext PostmasterContext;
+//extern PGDLLIMPORT MemoryContext CacheMemoryContext;
+//extern PGDLLIMPORT MemoryContext MessageContext;
+//extern PGDLLIMPORT MemoryContext TopTransactionContext;
+//extern PGDLLIMPORT MemoryContext CurTransactionContext;
 
 /* This is a transient link to the active portal's memory context: */
-extern PGDLLIMPORT MemoryContext PortalContext;
+//extern PGDLLIMPORT MemoryContext PortalContext;
 
 /* Backwards compatibility macro */
 #define MemoryContextResetAndDeleteChildren(ctx) MemoryContextReset(ctx)

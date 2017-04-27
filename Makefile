@@ -85,19 +85,19 @@ examples: $(EXAMPLES)
 	examples/simple_plpgsql
 
 examples/simple: examples/simple.c $(ARLIB)
-	$(CC) -I. -o $@ -g examples/simple.c $(ARLIB)
+	$(CC) -I. -o $@ -fsanitize=address -g examples/simple.c $(ARLIB) -pthread
 
 examples/normalize: examples/normalize.c $(ARLIB)
-	$(CC) -I. -o $@ -g examples/normalize.c $(ARLIB)
+	$(CC) -I. -o $@ -fsanitize=address -g examples/normalize.c $(ARLIB) -pthread
 
 examples/simple_error: examples/simple_error.c $(ARLIB)
-	$(CC) -I. -o $@ -g examples/simple_error.c $(ARLIB)
+	$(CC) -I. -o $@ -fsanitize=address -g examples/simple_error.c $(ARLIB) -pthread
 
 examples/normalize_error: examples/normalize_error.c $(ARLIB)
-	$(CC) -I. -o $@ -g examples/normalize_error.c $(ARLIB)
+	$(CC) -I. -o $@ -fsanitize=address -g examples/normalize_error.c $(ARLIB) -pthread
 
 examples/simple_plpgsql: examples/simple_plpgsql.c $(ARLIB)
-	$(CC) -I. -o $@ -g examples/simple_plpgsql.c $(ARLIB)
+	$(CC) -I. -o $@ -fsanitize=address -g examples/simple_plpgsql.c $(ARLIB) -pthread
 
 TESTS = test/complex test/concurrency test/fingerprint test/normalize test/parse test/parse_plpgsql
 test: $(TESTS)
@@ -111,19 +111,19 @@ test: $(TESTS)
 	diff -Naur test/plpgsql_samples.expected.json test/plpgsql_samples.actual.json
 
 test/complex: test/complex.c $(ARLIB)
-	$(CC) -I. -Isrc -o $@ -g test/complex.c $(ARLIB)
+	$(CC) -I. -Isrc -o $@ -fsanitize=address -g test/complex.c $(ARLIB) -pthread
 
 test/concurrency: test/concurrency.c test/parse_tests.c $(ARLIB)
-	$(CC) -I. -o $@ -pthread -g test/concurrency.c $(ARLIB)
+	$(CC) -I. -o $@ -fsanitize=address -g test/concurrency.c $(ARLIB) -pthread
 
 test/fingerprint: test/fingerprint.c test/fingerprint_tests.c $(ARLIB)
-	$(CC) -I. -Isrc -o $@ -g test/fingerprint.c $(ARLIB)
+	$(CC) -I. -Isrc -o $@ -fsanitize=address -g test/fingerprint.c $(ARLIB) -pthread
 
 test/normalize: test/normalize.c test/normalize_tests.c $(ARLIB)
-	$(CC) -I. -Isrc -o $@ -g test/normalize.c $(ARLIB)
+	$(CC) -I. -Isrc -o $@ -fsanitize=address -g test/normalize.c $(ARLIB) -pthread
 
 test/parse: test/parse.c test/parse_tests.c $(ARLIB)
-	$(CC) -I. -o $@ -g test/parse.c $(ARLIB)
+	$(CC) -I. -o $@ -fsanitize=address -g test/parse.c $(ARLIB) -pthread
 
 test/parse_plpgsql: test/parse_plpgsql.c $(ARLIB)
-	$(CC) -I. -o $@ -I./src -I./src/postgres/include -g test/parse_plpgsql.c $(ARLIB)
+	$(CC) -I. -o $@ -fsanitize=address -I./src -I./src/postgres/include -g test/parse_plpgsql.c $(ARLIB) -pthread

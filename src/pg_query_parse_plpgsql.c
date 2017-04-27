@@ -391,6 +391,7 @@ PgQueryPlpgsqlParseResult pg_query_parse_plpgsql(const char* input)
 
     parse_result = pg_query_raw_parse(input);
     result.error = parse_result.error;
+    result.stderr_buffer = parse_result.stderr_buffer;
     if (result.error != NULL) {
         pg_query_exit_memory_context(ctx);
         return result;
@@ -447,4 +448,5 @@ void pg_query_free_plpgsql_parse_result(PgQueryPlpgsqlParseResult result)
   }
 
   free(result.plpgsql_funcs);
+  free(result.stderr_buffer);
 }
